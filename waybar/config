@@ -1,0 +1,135 @@
+[{
+  "name": "ext",
+    "output": "HDMI-A-1",
+    "modules-left": ["sway/workspaces"],
+    "sway/workspaces": {
+      "persistent-workspaces": {
+        "6": ["HDMI-A-1"],
+        "7": ["HDMI-A-1"],
+      }
+    },
+    "margin": "0 6",
+    "height": 32,
+},
+{
+  "name": "main",
+  "output": "eDP-1",
+  "modules-left": ["sway/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["tray", "idle_inhibitor", "network", "pulseaudio", "backlight", "cpu", "memory", "battery"],
+  "sway/workspaces": {
+    "persistent-workspaces": {
+      "1": ["eDP-1"],
+      "2": ["eDP-1"],
+      "3": ["eDP-1"],
+      "4": ["eDP-1"],
+      "5": ["eDP-1"]
+    }
+  },
+  "clock": {
+    "format": "{:%b %d | %OI:%OM %p}",
+    "tooltip-format": "<big>{:%A %Od}</big>\n<tt><span size='medium'>{calendar}</span></tt>",
+    "on-click": "gnome-calendar",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "format": {
+        "months":     "<span color='#a7c080'><b>{}</b></span>",
+        "days":       "<span color='#464e53'><b>{}</b></span>",
+        "weekdays":   "<span color='#d3c6aa'><b>{}</b></span>",
+        "today":      "<span color='#e69875'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    }
+  },
+  "network": {
+    "format-wifi": "「{essid}  」",
+    "format-ethernet": "「{ifname} 」",
+    "format-disconnected": "「󰣼 No Network」",
+    "max-length": 50,
+    "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+    "interval": 10,
+    "on-click": "kitty -e 'nmtui'"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "battery": {    
+    "states": {
+      "good": 90,
+      "warning": 30,
+      "critical": 15
+    },
+    "interval": 10,
+    "format": "「{capacity}% {icon}」",
+    "format-charging": "「{capacity}% 󰂈」",
+    "format-plugged": "「{capacity}% 󰂅」",
+    "format-icons": [
+      "󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹",
+    ],
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 5
+  },
+  "pulseaudio": {
+    "format": "「{volume}% {icon}」",
+    "format-bluetooth": "「{volume}% {icon} 󰂯」「{format_source}」",
+    "format-bluetooth-muted": "「0% 󰗿」「{format_source}」",
+    "format-muted": "「0% 󰸈」",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "󰋋",
+      "headset": "󰋋",
+      "phone": "",
+      "phone-muted": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "󰕿", "󰖀", "󰕾",
+      ]
+    },
+    "tooltip-format": "{icon} {desc} | {volume}%",
+    "on-click": "pavucontrol"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "「{percent}% {icon} 」",
+    "format-icons": ["", "", "", "", "", "", "", "", "", "", "", ""],
+    "on-scroll-up": "light -U 1",
+    "on-scroll-down": "light -A 1",
+  }, 
+  "memory": {
+    "states": {
+      "medium": 30,
+      "high": 60,
+      "critical": 90,
+    },
+    "format": "「{used}GB <big>󰾆 </big>」",
+    "format-medium": "「{used}GB <big>󰾅 </big>」",
+    "format-high": "「{used}GB <big>󰓅 </big>」",
+    "format-critical": "「{used}GB <big>󰀦 </big>」",
+    "format-alt": "「{percentage}% <big>󰾆 </big>」",
+    "tooltip": true,
+    "tooltip-format": "󰾆 {percentage}%\n󰘚 {used:0.1f}GB/{total:0.1f}GB",
+    "interval": 30,
+    "max-length": 15,
+  },
+  "cpu": {
+    "interval": 10,
+    "format": "「{usage}% <big>󰍛</big> 」"
+  }, 
+  "margin": "0 6",
+  "height": 32,
+}]
